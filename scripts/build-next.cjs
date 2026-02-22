@@ -2,13 +2,12 @@
 
 const { spawnSync } = require("node:child_process");
 
-const allowedNodeEnv = new Set(["production", "development", "test"]);
-if (!allowedNodeEnv.has(process.env.NODE_ENV)) {
+if (process.env.NODE_ENV !== "production") {
   console.warn(
-    `[build] Invalid NODE_ENV="${process.env.NODE_ENV ?? ""}". Overriding to "production" for Next.js build.`
+    `[build] NODE_ENV="${process.env.NODE_ENV ?? ""}" detected. Forcing NODE_ENV="production" for deterministic Next.js builds.`
   );
-  process.env.NODE_ENV = "production";
 }
+process.env.NODE_ENV = "production";
 
 const nextBin = require.resolve("next/dist/bin/next");
 const result = spawnSync(process.execPath, [nextBin, "build"], {
