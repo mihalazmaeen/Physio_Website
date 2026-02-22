@@ -7,6 +7,8 @@ import Testimonial from '@/lib/models/Testimonial';
 import Service from '@/lib/models/Service';
 import Appointment from '@/lib/models/Appointment';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
     try {
         await connectDB();

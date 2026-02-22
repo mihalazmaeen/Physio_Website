@@ -11,6 +11,8 @@ import Appointment from '@/lib/models/Appointment';
 import FAQ from '@/lib/models/FAQ';
 import User from '@/lib/models/User';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
     try {
         await connectDB();
